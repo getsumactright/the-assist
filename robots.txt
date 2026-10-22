@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://getsumactright.github.io/the-assist/sitemap.xml
