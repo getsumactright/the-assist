@@ -200,8 +200,8 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 #book-title{font-size:min(14cqi,96px)}
 #consultation{padding-bottom:0}
 .book{align-items:stretch}
-/* white line art on black: screen blending drops the black so he stands on the page itself */
-.book__clip{display:block;width:auto;height:clamp(360px,36vw,560px);aspect-ratio:680/786;margin-top:auto;align-self:flex-start;mix-blend-mode:screen;background:#000}
+/* transparent clip (HEVC alpha for Safari, VP9 alpha elsewhere): the page itself is the background */
+.book__clip{display:block;width:auto;height:clamp(360px,36vw,560px);aspect-ratio:680/786;margin-top:auto;align-self:flex-start;background:transparent}
 form.form{padding-bottom:clamp(80px,9vw,140px)}
 form.form{display:grid;grid-template-columns:1fr 1fr;gap:30px 28px}
 .field{display:flex;flex-direction:column;gap:8px}
