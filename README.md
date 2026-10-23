@@ -18,5 +18,4 @@ Hosted on GitHub Pages from `main` (repo root). Preview URL: https://getsumactri
 
 - Photos are Marcus's own, from his current site, re-encoded to WebP at 800px and 1600px.
 - The two cutouts of Marcus were made on-device with Apple Vision (`../tools/cutout.swift`); they are not AI-generated.
-- The dribble loop in the booking section was generated with Kling 3.0 on Higgsfield from the suited-man brand artwork, then cut and looped; see `../assets/animation/moves/generation-record.json`.
 - The font is Host Grotesk, self-hosted (SIL Open Font License, `assets/fonts/OFL.txt`).

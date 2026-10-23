@@ -39,17 +39,6 @@
     }
   });
 
-  // ---- Booking-section dribble loop: plays silently while on screen, still poster under reduced motion ----
-  document.querySelectorAll('[data-loop-clip]').forEach((v) => {
-    if (!('IntersectionObserver' in window)) return;
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !reducedQ.matches) {
-        if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
-        v.play().catch(() => {});
-      } else v.pause();
-    }, { threshold: 0.25 }).observe(v);
-  });
-
   // ---- Booking form: sends to Marcus's inbox through Web3Forms ----
   const form = document.querySelector('[data-booking-form]');
   if (form) {
