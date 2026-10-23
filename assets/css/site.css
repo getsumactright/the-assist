@@ -211,10 +211,8 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .book__aside{position:relative;display:flex;flex-direction:column;gap:24px;container-type:inline-size}
 /* the heading scales with its column so "CONSULTATION" never runs into the form */
 #book-title{font-size:min(14cqi,96px)}
-#consultation{padding-bottom:0}
 .book{align-items:stretch}
-.book__aside img{width:auto;height:clamp(360px,36vw,560px);margin-top:auto;align-self:flex-start}
-form.form{padding-bottom:clamp(80px,9vw,140px)}
+.book__clip{display:block;width:min(100%,400px);height:auto;aspect-ratio:4/5;object-fit:cover;margin-top:auto;border-radius:20px;background:var(--night)}
 form.form{display:grid;grid-template-columns:1fr 1fr;gap:30px 28px}
 .field{display:flex;flex-direction:column;gap:8px}
 .field--full{grid-column:1/-1}
@@ -289,7 +287,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 30px}
   .thumb{aspect-ratio:4/3;grid-column:auto;grid-row:auto}
   .th-4{z-index:auto}
   .ones li{grid-template-columns:1fr;gap:10px}
-  .book__aside img{display:none}
+  .book__clip{width:min(100%,320px);margin-top:8px}
   form.form{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr 1fr}
   .foot > div:first-child{grid-column:1/-1}
