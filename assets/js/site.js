@@ -39,42 +39,6 @@
     }
   });
 
-  // ---- Brand clip: plays once when seen; reduced motion keeps the still ----
-  document.querySelectorAll('[data-motion]').forEach((box) => {
-    const video = box.querySelector('video');
-    const status = box.querySelector('[data-motion-status]');
-    const pause = box.querySelector('[data-motion-pause]');
-    const replay = box.querySelector('[data-motion-replay]');
-    let started = false, token = 0;
-    const say = (t) => { status.textContent = t; };
-    const still = (t) => { video.pause(); box.classList.remove('is-playing'); pause.hidden = true; replay.textContent = 'Replay'; say(t); };
-    const play = async () => {
-      const mine = ++token;
-      if (video.preload === 'none') { video.preload = 'auto'; video.load(); }
-      try { video.currentTime = 0; } catch {}
-      video.muted = true;
-      try {
-        await video.play();
-        if (mine !== token) return;
-        box.classList.add('is-playing'); pause.hidden = false; pause.textContent = 'Pause'; say('Playing: six seconds, no sound.');
-      } catch { if (mine === token) still('Select Play to watch.'); }
-    };
-    replay.addEventListener('click', () => { started = true; play(); });
-    pause.addEventListener('click', async () => {
-      if (video.paused) { try { await video.play(); pause.textContent = 'Pause'; say('Playing.'); } catch { still('Select Play to watch.'); } }
-      else { video.pause(); pause.textContent = 'Resume'; say('Paused.'); }
-    });
-    video.addEventListener('ended', () => still('The Assist. One pass, one assist.'));
-    video.addEventListener('error', () => still('Showing the still logo.'));
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !started) { started = true; if (reducedQ.matches) still('Reduced motion is on, so the still logo is shown. Select Play to watch.'); else play(); }
-        else if (!entry.isIntersecting && !video.paused) still('Select Replay to watch again.');
-      }, { threshold: 0.45 }).observe(box);
-    }
-    document.addEventListener('visibilitychange', () => { if (document.hidden && !video.paused) { token++; still('Select Replay to watch again.'); } });
-  });
-
   // ---- Booking-section dribble loop: plays silently while on screen, still poster under reduced motion ----
   document.querySelectorAll('[data-loop-clip]').forEach((v) => {
     if (!('IntersectionObserver' in window)) return;

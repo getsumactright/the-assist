@@ -191,19 +191,6 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .ones li p{margin:0;color:var(--bone-dim)}
 .ones li h3 small{display:block;margin-top:10px}
 
-/* motion */
-.motion{background:var(--umber)}
-.motion__grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,112px);align-items:center}
-.motion__copy{display:flex;flex-direction:column;gap:22px}
-.screen{border-radius:20px;overflow:hidden;background:var(--night);box-shadow:0 40px 70px -40px rgba(0,0,0,.8);max-width:520px;width:100%;justify-self:center}
-.screen__media{position:relative;aspect-ratio:4/5}
-.screen__media video,.screen__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.is-playing .screen__media img{visibility:hidden}
-.screen__bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#0d0c08}
-.screen__bar p{margin:0;font-size:14.5px;color:var(--bone-dim)}
-.screen__bar .btns{display:flex;gap:8px}
-.screen__bar button{min-height:44px;padding:8px 18px;border-radius:99px;border:0;background:var(--umber-2);color:var(--bone);font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.screen__bar button:hover{background:var(--orange);color:var(--night)}
 [hidden]{display:none!important}
 
 /* consultation */
@@ -255,7 +242,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 30px}
 
 /* responsive */
 @media (max-width:1024px){
-  .meet,.ones,.motion__grid,.book{grid-template-columns:minmax(0,1fr)}
+  .meet,.ones,.book{grid-template-columns:minmax(0,1fr)}
   .meet__copy{position:static}
   .lookbook{grid-template-columns:minmax(0,1fr)}
   .hero__lede{max-width:34ch}
