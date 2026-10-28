@@ -79,8 +79,6 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .t-c{left:.02em;top:102%;font-size:.17em;font-weight:400;letter-spacing:-.03em}
 .hero__stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--fade);z-index:4;pointer-events:none;background:var(--to-night)}
 .hero__marcus{position:absolute;left:50%;bottom:0;height:min(94%,1000px);width:auto;max-width:none;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
-.hero__lede{position:absolute;left:var(--pad);bottom:clamp(32px,5svh,56px);z-index:5;max-width:min(30ch,26vw);display:flex;flex-direction:column;align-items:flex-start;gap:20px}
-.hero__lede p{margin:0;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:var(--bone)}
 .hero__social{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:8px;list-style:none;margin:0 0 0 -13px;padding:0}
 .hero__social a,.soc a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--bone-dim);transition:color .2s,background .2s}
 .hero__social a:hover,.soc a:hover{color:var(--night);background:var(--orange)}
@@ -261,16 +259,17 @@ footer{background:var(--from-night) top/100% var(--fade) no-repeat,var(--band);p
   .lb__right{background:var(--from-night) top/100% var(--fade) no-repeat,var(--to-night) bottom/100% var(--fade) no-repeat,var(--band)}
   .lb__left{padding-bottom:clamp(48px,6vw,96px)}
   .lb__strip{position:static;align-self:stretch;margin-top:24px}
-  .hero__lede{max-width:34ch}
+  /* stacked heroes: the glow lives in the stage so its fade lands on plain night, with no seam above the button row */
+  .hero{background:var(--night)}
+  .hero__stage{background:radial-gradient(120% 90% at 50% 100%,#262318 0%,var(--night) 60%)}
   .menu{grid-template-columns:1fr}
   .menu aside{display:none}
 }
 /* tablet: Marcus fills the width, so the intro and badge move out from over his suit to a row below him */
 @media (min-width:761px) and (max-width:1024px){
-  .hero{height:auto;min-height:0;max-height:none;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:40px}
+  .hero{height:auto;min-height:0;max-height:none;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:40px}
   .hero__stage{position:relative;flex:0 0 100%;height:clamp(600px,calc(100svh - 220px),940px)}
-  .hero__lede{position:static;max-width:44ch;padding-left:var(--pad)}
-  .badge{position:static;padding:0 var(--pad) 0 0}
+  .badge{position:static;margin-left:auto;padding:0 var(--pad) 0 0}
 }
 @media (max-width:760px){
   .top .pill{display:none}
@@ -283,7 +282,6 @@ footer{background:var(--from-night) top/100% var(--fade) no-repeat,var(--band);p
   .t-c{left:50%;translate:-50% 0;font-size:.242em}
   .hero__marcus{height:86%}
   .hero__social{display:none}
-  .hero__lede{position:static;max-width:none;padding:24px var(--pad) 8px}
   .badge{position:static;flex-direction:row;padding:8px var(--pad) 32px;justify-content:flex-start}
   .badge__ring{width:96px}
   .panels{height:auto;flex-direction:column;gap:2px}
