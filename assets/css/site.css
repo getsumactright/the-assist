@@ -70,7 +70,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .t-a{left:var(--pad);top:19%;font-size:clamp(34px,5.4vw,96px);font-weight:400}
 .t-b{left:50%;top:31%;transform:translateX(-50%);font-size:clamp(84px,21.5vw,380px)}
 .t-c{right:var(--pad);top:calc(31% + clamp(70px,17.6vw,312px));font-size:clamp(28px,4.2vw,74px);font-weight:400;letter-spacing:-.03em}
-.hero__type--line{z-index:4;color:transparent;-webkit-text-stroke:1.2px rgba(233,227,211,.8);-webkit-mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat;mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat}
+.hero__type--line{z-index:4;color:var(--bone);-webkit-mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat;mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat}
 .hero__marcus{position:absolute;left:50%;bottom:0;height:min(94%,1000px);width:auto;max-width:none;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
 .hero__lede{position:absolute;left:var(--pad);bottom:clamp(28px,5svh,56px);z-index:5;max-width:min(30ch,26vw);display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .hero__lede p{margin:0;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:var(--bone)}
@@ -252,8 +252,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 30px}
   .hero__disc{width:86vw;bottom:4%}
   .t-a{top:2%;font-size:9.4vw}
   .t-b{top:33%;font-size:19vw}
-  .t-c{top:calc(33% + 16vw);right:var(--pad);font-size:6.6vw}
-  .hero__type--line .t-c{color:var(--bone);-webkit-text-stroke:0}
+  .t-c{top:calc(33% + 16vw);right:var(--pad);font-size:4.6vw}
   .hero__type--line{-webkit-mask-size:auto 86%;mask-size:auto 86%}
   .hero__marcus{height:86%}
   .hero__social{display:none}
