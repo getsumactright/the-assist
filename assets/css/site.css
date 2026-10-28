@@ -6,6 +6,10 @@
   --orange:#d9622b; --orange-hi:#ec7a43;
   --sans:'Host Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:var(--sans);
   --pad:clamp(16px,3.4vw,48px); --max:1440px;
+  /* sections never switch colour on a hard line: each coloured ground eases in from night and back out over --fade */
+  --fade:clamp(96px,12vw,200px);
+  --from-night:linear-gradient(var(--night),rgba(22,21,15,.92) 20%,rgba(22,21,15,.7) 40%,rgba(22,21,15,.38) 60%,rgba(22,21,15,.1) 80%,rgba(22,21,15,0));
+  --to-night:linear-gradient(rgba(22,21,15,0),rgba(22,21,15,.1) 20%,rgba(22,21,15,.38) 40%,rgba(22,21,15,.7) 60%,rgba(22,21,15,.92) 80%,var(--night));
   /* spacing runs on a 4px scale: 4 8 12 16 20 24 32 40 48 56 64 96, plus the fluid section and gutter clamps */
   --ease:cubic-bezier(.16,1,.3,1);
 }
@@ -64,7 +68,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .menu__foot{position:absolute;left:var(--pad);bottom:32px;display:flex;gap:24px;flex-wrap:wrap}
 
 /* hero */
-.hero{position:relative;height:100svh;min-height:640px;max-height:1100px;overflow:hidden;background:radial-gradient(120% 90% at 50% 100%,#262318 0%,var(--night) 60%)}
+.hero{position:relative;height:100svh;min-height:640px;max-height:1100px;overflow:hidden;background:var(--to-night) bottom/100% var(--fade) no-repeat,radial-gradient(120% 90% at 50% 100%,#262318 0%,var(--night) 60%)}
 .hero__disc{position:absolute;left:50%;bottom:6%;width:min(54vw,74svh);aspect-ratio:1;border-radius:50%;background:var(--orange);transform:translateX(-50%);z-index:1}
 .hero__type{position:absolute;inset:0;z-index:2;margin:0;pointer-events:none;text-transform:uppercase;font-weight:500;letter-spacing:-.045em;color:var(--bone)}
 .hero__type span{position:absolute;display:block;white-space:nowrap;line-height:.8}
@@ -73,6 +77,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .t-b{left:50%;top:31%;transform:translateX(-50%);font-size:clamp(84px,21.5vw,380px)}
 .t-c{left:.02em;top:102%;font-size:.17em;font-weight:400;letter-spacing:-.03em}
 .hero__type--line{z-index:4;color:var(--bone);text-shadow:0 1px 2px rgba(22,21,15,.7),0 3px 18px rgba(22,21,15,.6);-webkit-mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat;mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat}
+.hero__stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--fade);z-index:4;pointer-events:none;background:var(--to-night)}
 .hero__marcus{position:absolute;left:50%;bottom:0;height:min(94%,1000px);width:auto;max-width:none;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
 .hero__lede{position:absolute;left:var(--pad);bottom:clamp(32px,5svh,56px);z-index:5;max-width:min(30ch,26vw);display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .hero__lede p{margin:0;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:var(--bone)}
@@ -139,6 +144,10 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 
 /* find your play band */
 .band{position:relative;background:var(--band);overflow:hidden;min-height:clamp(380px,46vw,620px);display:grid;place-items:center;text-align:center;isolation:isolate}
+.band::before,.band::after{content:"";position:absolute;left:0;right:0;height:var(--fade);pointer-events:none}
+.band::before{top:0;background:var(--from-night)}
+.band::after{bottom:0;background:var(--to-night)}
+.band .wrap{position:relative;z-index:1}
 .band__img{position:absolute;top:0;bottom:0;width:34%;z-index:-1}
 .band__img{opacity:.5}
 .band__img img{width:100%;height:100%;object-fit:cover}
@@ -182,7 +191,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 .lb__strip button:hover,.lb__strip button:focus-visible{transform:translateY(-10px)}
 .lb__strip button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 .lb__strip button[aria-pressed="true"]{outline:2px solid var(--orange);outline-offset:3px}
-.lb__right{background:var(--band);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;padding:clamp(48px,6vw,96px) var(--pad);text-align:center}
+.lb__right{background:var(--from-night) top/100% var(--fade) no-repeat,var(--to-night) bottom/100% var(--fade) no-repeat,linear-gradient(90deg,var(--night),rgba(22,21,15,.7) 30%,rgba(22,21,15,.2) 70%,rgba(22,21,15,0)) left/var(--fade) 100% no-repeat,var(--band);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;padding:clamp(48px,6vw,96px) var(--pad);text-align:center}
 .lb__feature{width:min(78%,440px);aspect-ratio:4/5;overflow:hidden;background:var(--umber)}
 .lb__feature img{width:100%;height:100%;object-fit:cover;transform:scale(1.07);transition:opacity .45s ease}
 .lb__feature img.swap{opacity:0}
@@ -233,7 +242,7 @@ form.form{display:grid;grid-template-columns:1fr 1fr;gap:56px 32px}
 .foot__note a:hover{color:var(--orange-hi)}
 
 /* footer */
-footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 32px}
+footer{background:var(--from-night) top/100% var(--fade) no-repeat,var(--band);padding:clamp(48px,6vw,80px) 0 32px}
 .foot{display:grid;grid-template-columns:minmax(0,6fr) repeat(2,minmax(0,3fr));gap:32px}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;align-content:start}
 .foot ul a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font:500 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--bone-dim)}
@@ -249,6 +258,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 32px}
   .book{row-gap:64px}
   .meet__copy{position:static}
   .lookbook{grid-template-columns:minmax(0,1fr)}
+  .lb__right{background:var(--from-night) top/100% var(--fade) no-repeat,var(--to-night) bottom/100% var(--fade) no-repeat,var(--band)}
   .lb__left{padding-bottom:clamp(48px,6vw,96px)}
   .lb__strip{position:static;align-self:stretch;margin-top:24px}
   .hero__lede{max-width:34ch}
@@ -258,7 +268,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 32px}
 /* tablet: Marcus fills the width, so the intro and badge move out from over his suit to a row below him */
 @media (min-width:761px) and (max-width:1024px){
   .hero{height:auto;min-height:0;max-height:none;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:40px}
-  .hero__stage{position:relative;flex:0 0 100%;height:clamp(600px,calc(100svh - 220px),940px);border-bottom:1px solid var(--rule)}
+  .hero__stage{position:relative;flex:0 0 100%;height:clamp(600px,calc(100svh - 220px),940px)}
   .hero__lede{position:static;max-width:44ch;padding-left:var(--pad)}
   .badge{position:static;padding:0 var(--pad) 0 0}
 }
@@ -274,7 +284,7 @@ footer{background:var(--band);padding:clamp(48px,6vw,80px) 0 32px}
   .hero__type--line{-webkit-mask-size:auto 86%;mask-size:auto 86%}
   .hero__marcus{height:86%}
   .hero__social{display:none}
-  .hero__lede{position:static;max-width:none;padding:24px var(--pad) 8px;border-top:1px solid var(--rule)}
+  .hero__lede{position:static;max-width:none;padding:24px var(--pad) 8px}
   .badge{position:static;flex-direction:row;padding:8px var(--pad) 32px;justify-content:flex-start}
   .badge__ring{width:96px}
   .panels{height:auto;flex-direction:column;gap:2px}
