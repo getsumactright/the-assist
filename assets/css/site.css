@@ -70,13 +70,13 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:150
 /* hero */
 .hero{position:relative;height:100svh;min-height:640px;max-height:1100px;overflow:hidden;background:var(--to-night) bottom/100% var(--fade) no-repeat,radial-gradient(120% 90% at 50% 100%,#262318 0%,var(--night) 60%)}
 .hero__disc{position:absolute;left:50%;bottom:6%;width:min(54vw,74svh);aspect-ratio:1;border-radius:50%;background:var(--orange);transform:translateX(-50%);z-index:1}
-.hero__type{position:absolute;inset:0;z-index:2;margin:0;pointer-events:none;text-transform:uppercase;font-weight:500;letter-spacing:-.045em;color:var(--bone)}
+/* one headline layer, in front of Marcus, so every letter is the same solid bone; a soft night shadow lifts it off the light suit */
+.hero__type{position:absolute;inset:0;z-index:4;text-shadow:0 2px 14px rgba(22,21,15,.4);margin:0;pointer-events:none;text-transform:uppercase;font-weight:500;letter-spacing:-.045em;color:var(--bone)}
 .hero__type span{position:absolute;display:block;white-space:nowrap;line-height:.8}
 /* THE and the promise ride inside ASSIST: THE sits just above the A, and the promise is sized to span the word edge to edge at any width */
-.t-a{left:.02em;bottom:96%;font-size:.25em;font-weight:400;text-shadow:none}
+.t-a{left:.02em;bottom:96%;font-size:.25em;font-weight:400}
 .t-b{left:50%;top:31%;transform:translateX(-50%);font-size:clamp(84px,21.5vw,380px)}
 .t-c{left:.02em;top:102%;font-size:.17em;font-weight:400;letter-spacing:-.03em}
-.hero__type--line{z-index:4;color:var(--bone);text-shadow:0 1px 2px rgba(22,21,15,.7),0 3px 18px rgba(22,21,15,.6);-webkit-mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat;mask:url(../img/marcus-sage-cutout.webp) 50% 100%/auto min(94%,1000px) no-repeat}
 .hero__stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--fade);z-index:4;pointer-events:none;background:var(--to-night)}
 .hero__marcus{position:absolute;left:50%;bottom:0;height:min(94%,1000px);width:auto;max-width:none;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
 .hero__lede{position:absolute;left:var(--pad);bottom:clamp(32px,5svh,56px);z-index:5;max-width:min(30ch,26vw);display:flex;flex-direction:column;align-items:flex-start;gap:20px}
@@ -281,7 +281,6 @@ footer{background:var(--from-night) top/100% var(--fade) no-repeat,var(--band);p
   .t-b{top:33%;font-size:19vw}
   /* on phones the promise stays readable, so it runs wider than ASSIST, centred under it */
   .t-c{left:50%;translate:-50% 0;font-size:.242em}
-  .hero__type--line{-webkit-mask-size:auto 86%;mask-size:auto 86%}
   .hero__marcus{height:86%}
   .hero__social{display:none}
   .hero__lede{position:static;max-width:none;padding:24px var(--pad) 8px}
