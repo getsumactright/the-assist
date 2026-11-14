@@ -291,11 +291,18 @@ footer{background:var(--from-night) top/100% var(--fade) no-repeat,var(--band);p
   .panel__body{position:relative;background:var(--umber)}
   .panel__more{grid-template-rows:1fr}
   .panel-tab{display:none}
-  .collage{aspect-ratio:auto;display:flex;flex-direction:column;gap:12px}
-  .collage__main{aspect-ratio:4/5}
-  .collage__thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .thumb{aspect-ratio:4/3;grid-column:auto;grid-row:auto}
+  /* phones: no large preview; four bigger thumbnails with the role text right under them, so a tap and its description share one screen */
+  .meet{display:flex;flex-direction:column;gap:24px}
+  .meet__copy{display:contents}
+  .meet__copy .lead{margin-top:0}
+  .collage{order:1;aspect-ratio:auto;display:block}
+  .collage__main{display:none}
+  .collage__thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .thumb{aspect-ratio:4/5;grid-column:auto;grid-row:auto}
+  .thumb[aria-pressed="true"]{outline-offset:3px}
   .th-4{z-index:auto}
+  .meet__role{order:2;min-height:11em;padding-top:20px}
+  .meet__copy > .pill{order:3}
   .ones li{grid-template-columns:1fr;gap:12px}
   form.form{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr 1fr}
